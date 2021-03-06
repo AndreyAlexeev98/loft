@@ -13,10 +13,11 @@
  Другими словами: функция должна возвращать в неизменном виде то, что поступает ей на вход
  */
 
-function returnFirstArgument(value) {
-  return value;
+function returnFirstArgument(par) {
+  return par;
 }
-console.log(returnFirstArgument('Привет loft!!!'));
+
+console.log(returnFirstArgument('строка'));
 
 /*
  Задание 2:
@@ -32,11 +33,15 @@ console.log(returnFirstArgument('Привет loft!!!'));
  Пример:
    sumWithDefaults(10) вернет 110
  */
+
 function sumWithDefaults(a, b = 100) {
-  return a + b;
+  // описание функции, передаем 2 аргумента, второй по умолчанию == 100;
+  const sum = a + b; // объявил переменную sum, где храниться результат суммы 2х параметров;
+  return sum; // результат выполнения функции - возврат значения переменной sum.
 }
-console.log(sumWithDefaults(5, 7)); // 12
-console.log(sumWithDefaults(8)); // 108
+
+console.log(sumWithDefaults(9, 5)); // выведет 14
+console.log(sumWithDefaults(9)); // выведет 109
 
 /*
  Задание 3:
@@ -47,9 +52,9 @@ console.log(sumWithDefaults(8)); // 108
    returnFnResult(() => 'привет') вернет 'привет'
  */
 function returnFnResult(fn) {
-  return fn; // ????????????
+  return fn('привет!!!');
 }
-console.log(returnFnResult('loft'));
+
 /*
  Задание 4:
 
@@ -63,7 +68,17 @@ console.log(returnFnResult('loft'));
    console.log(f()); // выведет 12
    console.log(f()); // выведет 13
  */
-function returnCounter(number) {}
+function returnCounter(n = 0) {
+  return function () {
+    n++; // используем инкремент чтобы увеличить значение на 1;
+    return n; // в конце функция возвращает результат своей работы;
+  };
+}
+
+let res = returnCounter();
+console.log(res()); // получаем 1, так как если аргумент не передан, по умолчанию параметр становится равным 0
+res = returnCounter(4); // передаем аргумент - число 4
+console.log(res()); // получаем 5, так как 4 увеличивается на 1.
 
 /*
  Задание 5 *:
@@ -74,7 +89,14 @@ function returnCounter(number) {}
  Пример:
    returnArgumentsArray(1, 2, 3) вернет [1, 2, 3]
  */
-function returnArgumentsArray() {}
+function returnArgumentsArray(...ar) {
+  // ... - собрать все параметры и положить их в массив, название которому придумываем сами
+  return ar; // функция возвращает уже готовый массив с параметрами
+}
+
+const array1 = returnArgumentsArray('first', 'second', 3); // передали в ф-цию 3 аргумента
+console.log(array1); // вывел массив со всеми переданными аргументами;
+console.log(array1['1']); // вывел 2й элемент массива ('second')
 
 /*
  Задание 6 *:
@@ -91,7 +113,19 @@ function returnArgumentsArray() {}
 
    console.log(newSum()) выведет 6
  */
-function bindFunction(fn, ...args) {}
+function bindFunction(fn, ...array2) {
+  // передал в параметры функц, и любое кол-во будущих аргументов
+  return fn.bind(null, ...array2); // привязываем параметры с помозью метода bind
+}
+
+const newBindFunction = bindFunction(sum); // результат выполнения bindFunction записываем в переменную newBindFunction, в bindFunction передаем функцию для вычисления суммы аргументов
+function sum(a, b) {
+  // описываем функцию, которую передадим первым параметром в функцию, которая принимает функцию
+  const result = a - b; // вычисляем результат вычитания переданных параметров
+  return result; // возвращаем результат
+}
+
+console.log(newBindFunction(12, 8)); // передаем аргументы для вычисления в функции sum
 
 export {
   returnFirstArgument,
