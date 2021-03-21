@@ -32,7 +32,7 @@
 import { loadAndSortTowns } from './functions';
 import './towns.html';
 
-const homeworkContainer = document.querySelector('#homework-container');
+const homeworkContainer = document.querySelector('#app');
 
 /*
  Функция должна вернуть Promise, который должен быть разрешен с массивом городов в качестве значения
@@ -89,7 +89,7 @@ async function tryToLoad() {
   try {
     towns = await loadTowns();
     loadingBlock.classList.add('hidden');
-    loadingFailedBlock/classList.add('hidden');
+    loadingFailedBlock.classList.add('hidden');
     filterBlock.classList.remove('hidden');
   } catch (e) {
     loadingBlock.classList.add('hidden');
