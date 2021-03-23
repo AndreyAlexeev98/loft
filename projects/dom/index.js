@@ -176,11 +176,9 @@ function collectDOMStat(root) {
             b.classes[clasName] = 1;
           }
         }
-        if (elem.childNodes.length) {
-          collectDOMStat(elem);
-        }
+        recurs(elem);
+
       }
-      recurs(elem);
     }
 
   }
