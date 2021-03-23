@@ -25,8 +25,7 @@ function createDivWithText(text) {
    prepend(document.querySelector('#one'), document.querySelector('#two')) // добавит элемент переданный первым аргументом в начало элемента переданного вторым аргументом
  */
 function prepend(what, where) {
-  const prependFirst = where.firstChild;
-  where.insertBefore(what, prependFirst);
+  where.prepend(what);
 }
 
 /*
@@ -151,30 +150,42 @@ function deleteTextNodesRecursive(where) {
      texts: 3
    }
  */
-const b = { tags: {}, classes: {}, texts: 0 };
-function collectDOMStat(root) {
-  for (const elem of root.childNodes) {
-    if (elem.nodeType === 3) {
-      b.texts++;
-    } else if (elem.nodeType === 1) {
-      if (b.tags[elem.tagName]) {
-        b.tags[elem.tagName]++;
-      } else {
-        b.tags[elem.tagName] = 1;
-      }
 
-      for (const clasName of elem.classList) {
-        if (b.classes[clasName]) {
-          b.classes[clasName]++;
+
+
+function collectDOMStat(root) {
+
+  const b = { tags: {}, classes: {}, texts: 0 };
+
+  function recurs(root) {
+
+    for (const elem of root.childNodes) {
+      if (elem.nodeType === 3) {
+        b.texts++;
+      } else if (elem.nodeType === 1) {
+        if (b.tags[elem.tagName]) {
+          b.tags[elem.tagName]++;
         } else {
-          b.classes[clasName] = 1;
+          b.tags[elem.tagName] = 1;
+        }
+
+        for (const clasName of elem.classList) {
+          if (b.classes[clasName]) {
+            b.classes[clasName]++;
+          } else {
+            b.classes[clasName] = 1;
+          }
+        }
+        if (elem.childNodes.length) {
+          collectDOMStat(elem);
         }
       }
-      if (elem.childNodes.length) {
-        collectDOMStat(elem);
-      }
+      recurs(elem);
     }
+
   }
+
+  recurs(root);
   return b;
 }
 
