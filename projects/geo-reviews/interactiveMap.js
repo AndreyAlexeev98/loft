@@ -53,4 +53,13 @@ export default class interactiveMap {
     this.map.balloon.close();
   }
 
+  createPlacemark(coords) {
+    const placemark = new ymaps.Placemark(coords);
+    placemark.events.add('click', (e) => {
+      const coords = e.get('target').geometry.getCoordinates();
+      this.onClick(coords);
+    });
+    this.clusterer.add(placemark);
+  }
+
 }
