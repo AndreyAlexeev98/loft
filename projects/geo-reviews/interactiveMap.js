@@ -1,5 +1,6 @@
 export default class interactiveMap {
   constructor (mapId, onClick) {
+    this.formTemplate = document.querySelector('#addFormTemplate').innerHTML;
     this.mapId = mapId;
     this.onClick = onClick;
   }
@@ -38,6 +39,18 @@ export default class interactiveMap {
     });
     this.map.events.add('click', (e) => this.onClick(e.get('coords')));
     this.map.geoObjects.add(this.clusterer);
+  }
+
+  openBalloon(coords, content) {
+    this.map.balloon.open(coords, content);
+  }
+
+  setBalloonContent(content) {
+    this.map.balloon.setData(content);
+  }
+
+  closeBalloon() {
+    this.map.balloon.close();
   }
 
 }
