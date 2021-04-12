@@ -1,0 +1,65 @@
+/* В этом файле храняться настройки не зависящие от контента */
+
+html, body {
+    font-size: 16px;
+    line-height: 1.42;  /* никогда не указывать в px */
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    /* 2 Свойства для сглаживания букв :*/
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.wrapper {
+    overflow: hidden;
+
+}
+
+.container {
+    width: 1200px;  /* ограничить блок по ширине для широких экранов */
+    margin: 0 auto;
+}
+
+/* Прибиваем footer к низу вне зависимости от контента страницы: */
+
+html, body {
+    height: 100%;
+}
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.wrapper__content {
+    flex: 1;
+}
+ /* end code footer press down */
+
+ * {
+     box-sizing: border-box;
+ }
+
+ ul {
+     margin: 0;
+     padding: 0;
+ }
+
+ ul li {
+     list-style: none;
+ }
+
+ button {
+     border: none;
+     background: transparent;
+     cursor: pointer;
+ }
+
+ h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+    font-weight: normal;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}        
+

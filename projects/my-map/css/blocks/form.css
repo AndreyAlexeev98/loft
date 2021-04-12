@@ -1,0 +1,45 @@
+.form-map {
+  display: flex;
+  flex-direction: column;
+  margin: 29px 26px 19px 17px;
+  min-width: 310px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+}
+
+.form__title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.form__input, .form__textarea {
+  border-radius: 3px;
+  border: 1px solid #cfcfcf;
+  padding: 11px;
+}
+
+.form__input:hover, .form__textarea:hover, .form__input:focus, .form__textarea:focus {
+  border-color: #1371c8;
+  outline: none;
+}
+
+.form__input {
+  margin-bottom: 10px;
+}
+
+.form__textarea {
+  margin-bottom: 20px;
+  resize: vertical;
+  min-height: 98px;
+}
+
+.form__btn .btn {
+  background-color: #ff8663;
+  color: #fff;
+  border-radius: 3px;
+  font-weight: 700;
+  padding: 10px 16px;
+}
