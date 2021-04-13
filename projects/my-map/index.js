@@ -87,7 +87,7 @@ function init() {
         if (!map.balloon.isOpen()) {
             var coords = e.get('coords');
             map.balloon.open(coords, {
-                contentBody: '<form class="form form-map" action="#">' +
+                contentBody: '<form class="form form-map" data-role="form-review" action="#">' +
                 '<h4 class="form__title">Отзыв:</h4>' +
                 '<input class="form__input" data-role="input-name" name="name" type="text" placeholder="Укажите ваше имя">' +
                 '<input class="form__input" data-role="input-place" name="place" type="text" placeholder="Укажите место">'+
@@ -97,18 +97,27 @@ function init() {
             });
         }
         else {
-            myMap.balloon.close();
+            map.balloon.close();
         }
       
     });
 
-    map.events.add('click', function (e) {
+    document.addEventListener('click', function (e) {
         if (e.target.dataset.role === "add-review") {
-            alert('ok');
+            e.preventDefault();
+            const reviewForm = document.querySelector('[data-role=form-review]');
+            var coords = e.get('target').geometry.getCoordinates();
+            reviewForm.dataset.coords = JSON.stringify(coords);
+            console.log(coords);
         }
     })
     
 }
+
+
+/* setBalloonContent(content) {     // изменяет содержимое балуна
+    this.map.balloon.setData(content)
+} */
 
 
 
