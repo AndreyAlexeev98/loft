@@ -15,26 +15,6 @@ let placemarks = [
             '<div class="form__btn"><button class="btn" type="submit">Добавить</button></div>',
             '</form>'
         ]
-    },
-    {
-        latitude: '59.96',
-        longitude: '30.32',
-        hintContent: '<div>this is hint</div>',
-        balloonContent: [
-            '<div class="className">This is</div>',
-            '<div>balloon</div>',
-            '<div>placemarks2</div>'
-        ]
-    },
-    {
-        latitude: '59.95',
-        longitude: '30.33',
-        hintContent: '<div>this is hint</div>',
-        balloonContent: [
-            '<div class="className">This is</div>',
-            '<div>balloon</div>',
-            '<div>placemarks3</div>'
-        ]
     }
 ],
     geoObjects = [];
